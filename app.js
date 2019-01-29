@@ -1,10 +1,22 @@
  // Search on enter key event
 function search(e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13) { // Enter to open google with input
         var val = document.getElementById("search-field").value;
-        window.open("https://google.com/search?q=" + val);
+        document.location = "https://google.com/search?q=" + val;
     }
 }
+
+function showSearhcBar() {
+    document.getElementById('search').style.display = 'flex';
+    document.getElementById('search-field').focus();
+}
+
+function hideSearchBar() {
+    document.getElementById('search-field').value = '';
+    document.getElementById('search-field').blur();
+    document.getElementById('search').style.display = 'none';
+}
+
 // Get current time and format
 function getTime() {
     let date = new Date(),
@@ -16,6 +28,10 @@ function getTime() {
         (hour < 10 ? ("0" + hour) : hour) + ":" +
         (min < 10 ? ("0" + min) : min) + ":" +
         (sec < 10 ? ("0" + sec) : sec);
+}
+
+document.getElementById("search").onkeypress = (evt) => {
+    return search(evt);
 }
 
 window.onload = () => {
@@ -45,11 +61,8 @@ window.onload = () => {
 
 document.addEventListener("keydown", event => {
     if (event.keyCode == 32) {          // Spacebar code to open search
-        document.getElementById('search').style.display = 'flex';
-        document.getElementById('search-field').focus();
+        showSearhcBar();
     } else if (event.keyCode == 27) {   // Esc to close search
-        document.getElementById('search-field').value = '';
-        document.getElementById('search-field').blur();
-        document.getElementById('search').style.display = 'none';
+        hideSearchBar()
     }
 });
