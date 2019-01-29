@@ -1,0 +1,14 @@
+{
+  "name": "Home",
+  "version": "0.0.2",
+  "short_name": "home-extension",
+  "manifest_version": 2,
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "bookmarks",
+    "chrome://favicon/"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self' 'unsafe-eval'"
+}
